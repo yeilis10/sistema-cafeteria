@@ -1,0 +1,24 @@
+name: Ejecutar Java
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  run-java:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar repositorio
+      uses: actions/checkout@v3
+
+    - name: Instalar Java
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+
+    - name: Compilar
+      run: javac *.java
+
+    - name: Ejecutar
+      run: java Main
